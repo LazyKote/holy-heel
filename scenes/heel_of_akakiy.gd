@@ -11,12 +11,12 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body")
-	if body.is_in_group("player"):
-		print("player")
+	print_debug("body")
+	if body is Player:
+		print_debug("player entered")
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print("area")
+	print_debug("area")
 	if area.is_in_group("monster"):
-		print("player")
+		print_debug("monster entered")

@@ -1,20 +1,24 @@
-extends CharacterBody2D
-@onready var bullet_timer = $Timer
+class_name Bullet extends CharacterBody2D
+
 
 var pos : Vector2
 var rot : float
 var dir : float
-var speed = 1000.0
+@export var speed = 1000.0
+
+@onready var bullet_timer = $Timer
+
 
 func _ready() -> void:
 	global_position = pos
 	global_rotation = rot
-	bullet_timer.timeout.connect(delete_bullet)
+	bullet_timer.timeout.connect(_delete_bullet)
+
 
 func _physics_process(delta: float) -> void:
 	velocity = Vector2(speed, 0).rotated(dir)
 	move_and_slide()
 
-func delete_bullet():
+
+func _delete_bullet():
 	queue_free()
-	
