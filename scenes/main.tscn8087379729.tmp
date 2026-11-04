@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://c6x2iwnuixnp2"]
+
+[ext_resource type="PackedScene" uid="uid://cjn165im5u7wm" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://tm1k1idbdd1o" path="res://scenes/monster.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://mo76whohldmf" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cwjuclt6lup0w" path="res://monster_path.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://r7wfhvx6jhe6" path="res://monster_path.gd" id="5_tbgi4"]
+
+[sub_resource type="Curve2D" id="Curve2D_jyhfs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 200, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[node name="Node2D" type="Node2D" unique_id=281081384]
+
+[node name="Player" parent="." unique_id=580058509 groups=["player"] instance=ExtResource("1_o5qli")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1863081627]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Monster" parent="." unique_id=959743226 instance=ExtResource("2_0wfyh")]
+position = Vector2(103, 0)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1221655308 node_paths=PackedStringArray("path_follow")]
+position = Vector2(51, 0)
+curve = SubResource("Curve2D_jyhfs")
+script = ExtResource("3_sugp2")
+path_follow = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" parent="Path2D" unique_id=605296822 instance=ExtResource("4_jyhfs")]
+position = Vector2(200, 0)
+rotation = 3.1415927
+script = ExtResource("5_tbgi4")

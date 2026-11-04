@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cwjuclt6lup0w"]
+
+[ext_resource type="PackedScene" uid="uid://tm1k1idbdd1o" path="res://scenes/monster.tscn" id="1_0rhur"]
+
+[node name="Monster_path" type="PathFollow2D" unique_id=605296822]
+loop = false
+
+[node name="Monster" parent="." unique_id=959743226 instance=ExtResource("1_0rhur")]

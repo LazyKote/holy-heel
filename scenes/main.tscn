@@ -1,0 +1,74 @@
+[gd_scene format=4 uid="uid://c6x2iwnuixnp2"]
+
+[ext_resource type="PackedScene" uid="uid://cjn165im5u7wm" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="TileSet" uid="uid://dtpp7ulbkccge" path="res://tilemaps/tiles_floor.tres" id="1_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://tm1k1idbdd1o" path="res://scenes/monster.tscn" id="2_0wfyh"]
+[ext_resource type="TileSet" uid="uid://d0tq5qqrhuq23" path="res://tilemaps/tiles_walls.tres" id="2_tipki"]
+[ext_resource type="Script" uid="uid://mo76whohldmf" path="res://scenes/monster_spawner.gd" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://c0vwfwxn2ubym" path="res://tilemaps/Column.png" id="3_tipki"]
+[ext_resource type="PackedScene" uid="uid://cwjuclt6lup0w" path="res://monster_path.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://r7wfhvx6jhe6" path="res://monster_path.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://c0fvhthfwjut3" path="res://scenes/heel_of_akakiy.gd" id="9_85g3d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85g3d"]
+texture = ExtResource("3_tipki")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_6ged0"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_85g3d")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
+size = Vector2(20, 65)
+
+[sub_resource type="Curve2D" id="Curve2D_jyhfs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -247, 0)
+}
+point_count = 2
+
+[node name="Node2D" type="Node2D" unique_id=281081384]
+
+[node name="Floor" type="TileMapLayer" parent="." unique_id=936141242]
+tile_map_data = PackedByteArray("AAD8//7/AgAEAAAAAAD8////AgAEAAAAAAD9////AgAEAAAAAAD9//7/AgAEAAAAAAD+//7/AgAEAAAAAAD+////AgAEAAAAAAD/////AgAEAAAAAAD///7/AgAEAAAAAAAAAP7/AgAEAAAAAAAAAP//AgAEAAAAAAD9/wAAAgAEAAAAAAD+/wAAAgAEAAAAAAD//wAAAgAEAAAAAAD8/wAAAgAEAAAAAAAAAAAAAgAEAAAAAAAAAAEAAgAEAAAAAAD//wEAAgAEAAAAAAD+/wEAAgAEAAAAAAD9/wEAAgAEAAAAAAD8/wEAAgAEAAAAAAABAAEAAgAEAAAAAAACAAEAAgAEAAAAAAADAAEAAgAEAAAAAAADAAAAAgAEAAAAAAADAP//AgAEAAAAAAACAP//AgAEAAAAAAACAP7/AgAEAAAAAAABAP7/AgAEAAAAAAABAP//AgAEAAAAAAABAAAAAgAEAAAAAAACAAAAAgAEAAAAAAADAP7/AgAEAAAAAAAEAP7/AgAEAAAAAAAFAP7/AgAEAAAAAAAGAP7/AgAEAAAAAAAHAP7/AgAEAAAAAAAIAP7/AgAEAAAAAAAJAP7/AgAEAAAAAAAKAP7/AgAEAAAAAAAKAP//AgAEAAAAAAAKAAAAAgAEAAAAAAAKAAEAAgAEAAAAAAAJAAEAAgAEAAAAAAAIAAEAAgAEAAAAAAAHAAEAAgAEAAAAAAAGAAEAAgAEAAAAAAAFAAEAAgAEAAAAAAAEAAEAAgAEAAAAAAAEAAAAAgAEAAAAAAAFAAAAAgAEAAAAAAAGAAAAAgAEAAAAAAAHAAAAAgAEAAAAAAAIAAAAAgAEAAAAAAAJAAAAAgAEAAAAAAAJAP//AgAEAAAAAAAIAP//AgAEAAAAAAAHAP//AgAEAAAAAAAGAP//AgAEAAAAAAAFAP//AgAEAAAAAAAEAP//AgAEAAAAAAD8/wIAAgAEAAAAAAD9/wIAAgAEAAAAAAD+/wIAAgAEAAAAAAD//wIAAgAEAAAAAAAAAAIAAgAEAAAAAAABAAIAAgAEAAAAAAACAAIAAgAEAAAAAAADAAIAAgAEAAAAAAAEAAIAAgAEAAAAAAAFAAIAAgAEAAAAAAAGAAIAAgAEAAAAAAAHAAIAAgAEAAAAAAAIAAIAAgAEAAAAAAAJAAIAAgAEAAAAAAAKAAIAAgAEAAAAAAA=")
+tile_set = ExtResource("1_o6xl0")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=621582356]
+tile_map_data = PackedByteArray("AAD7////AAAAAAEAAAD7/wAAAAAAAAEAAAD7/wEAAAAAAAEAAAD7//3/AAAAAAAAAAD7//7/AAAAAAEAAAD7/wMAAAAAAAIAAAD7/wIAAAAAAAEAAAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD///3/AAABAAAAAAAAAP3/AAABAAAAAAABAP3/AAABAAAAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAABAAAAAAAGAP3/AAABAAAAAAAHAP3/AAABAAAAAAAIAP3/AAABAAAAAAAJAP3/AAABAAAAAAAKAP3/AAABAAAAAAD8/wMAAAABAAIAAAD9/wMAAAABAAIAAAD+/wMAAAABAAIAAAD//wMAAAABAAIAAAAAAAMAAAABAAIAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAMAAAABAAIAAAAEAAMAAAABAAIAAAAFAAMAAAABAAIAAAAGAAMAAAABAAIAAAAHAAMAAAABAAIAAAAIAAMAAAABAAIAAAAJAAMAAAABAAIAAAALAAMAAAACAAIAAAAKAAMAAAABAAIAAAALAAIAAAACAAEAAAALAAEAAAACAAEAAAALAAAAAAACAAEAAAALAP//AAACAAEAAAALAP7/AAACAAEAAAALAP3/AAACAAAAAAA=")
+tile_set = ExtResource("2_tipki")
+
+[node name="Decor" type="TileMapLayer" parent="." unique_id=1637327657]
+tile_map_data = PackedByteArray("AAACAAAAAQAAAAIAAAACAP//AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_6ged0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1863081627]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Monster" parent="." unique_id=959743226 instance=ExtResource("2_0wfyh")]
+position = Vector2(304, 79)
+
+[node name="HeelOfAkakiy" type="Area2D" parent="." unique_id=686407447]
+position = Vector2(79, 22)
+script = ExtResource("9_85g3d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HeelOfAkakiy" unique_id=2134827627]
+position = Vector2(0, -21.5)
+shape = SubResource("RectangleShape2D_6ged0")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1221655308 node_paths=PackedStringArray("path_follow")]
+position = Vector2(319, 0)
+curve = SubResource("Curve2D_jyhfs")
+script = ExtResource("3_sugp2")
+path_follow = NodePath("PathFollow2D")
+
+[node name="PathFollow2D" parent="Path2D" unique_id=605296822 instance=ExtResource("4_jyhfs")]
+rotates = false
+script = ExtResource("5_tbgi4")
+
+[node name="Player" parent="." unique_id=580058509 groups=["player"] instance=ExtResource("1_o5qli")]
+
+[connection signal="area_entered" from="HeelOfAkakiy" to="HeelOfAkakiy" method="_on_area_entered"]
+[connection signal="body_entered" from="HeelOfAkakiy" to="HeelOfAkakiy" method="_on_body_entered"]
