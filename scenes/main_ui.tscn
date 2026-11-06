@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bu1o1d63qa7n7"]
+
+[node name="MainUI" type="CanvasLayer" unique_id=1227034133]
+
+[node name="WaveCounter" type="Panel" parent="." unique_id=1119577142]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="WaveCounter" unique_id=1574809188]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WaveCounterLabel" type="Label" parent="WaveCounter/MarginContainer" unique_id=1511710167]
+layout_mode = 2

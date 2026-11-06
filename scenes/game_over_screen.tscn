@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://j4cgngwcwtnv"]
+
+[ext_resource type="Script" uid="uid://bwj7r282eute6" path="res://scripts/game_over_screen.gd" id="1_61w2s"]
+[ext_resource type="FontFile" uid="uid://bmkwkd0h27d1v" path="res://fonts/Jacquard12-Regular.ttf" id="2_jw6e5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ee4q0"]
+bg_color = Color(0, 0.015686275, 0.07058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tipki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fp22"]
+bg_color = Color(0, 0.015686275, 0.07058824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+
+[node name="Control" type="Control" unique_id=1749848662]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_61w2s")
+
+[node name="Panel" type="Panel" parent="." unique_id=527828822]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ee4q0")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1324202297]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -21.5
+offset_right = 20.0
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1442757921]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1410598212]
+layout_mode = 2
+
+[node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1606838147]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jw6e5")
+theme_override_font_sizes/font_size = 64
+text = "Game Over"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1371438937]
+layout_mode = 2
+theme_override_constants/separation = 45
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tipki")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1302747165]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=1313174425]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jw6e5")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_1fp22")
+text = "Restart"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/RestartButton" to="." method="_on_restart_button_pressed"]

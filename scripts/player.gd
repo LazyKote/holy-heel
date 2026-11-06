@@ -6,13 +6,13 @@ const speed = 250.0
 var bullet_path = preload("res://scenes/bullet.tscn")
 var _facing: String = "down"
 var spawn_location = Vector2(0, 0)
+var mouse_position
+var direction_vector : Vector2
 
 @onready var player_animation = $AnimatedSprite2D
-@onready var enemy = $"../Monster"
 
 
 func _ready() -> void:
-	#enemy.attack.connect(_on_enemy_attack)
 	pass
 
 
@@ -23,7 +23,6 @@ func get_input():
 
 
 func _physics_process(delta):
-	#look_at(get_global_mouse_position())
 	if Input.is_action_just_pressed("fire"):
 		fire()
 		
@@ -47,7 +46,6 @@ func _update_animation(input_dir: Vector2) -> void:
 #func _on_enemy_attack():
 	#global_position = spawn_location
 
-## После вызова игрок "умирает" и затем восстанавливается в первоначальной позиции
 func kill() -> void:
 	print_debug("Kill Player")
 	global_position = spawn_location
@@ -55,7 +53,9 @@ func kill() -> void:
 
 func fire():
 	var bullet = bullet_path.instantiate()
-	bullet.dir = rotation
+	var mouse_pos = get_global_mouse_position()
+	var aim_angle = global_position.angle_to_point(mouse_pos)
+	bullet.dir = aim_angle
 	bullet.pos = $Gun.global_position
-	bullet.rot = global_rotation
+	bullet.rot = aim_angle
 	get_parent().add_child(bullet)

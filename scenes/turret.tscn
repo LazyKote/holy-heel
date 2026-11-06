@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cdace3417jh66"]
+
+[ext_resource type="Script" uid="uid://bicsa48de0274" path="res://scripts/turret.gd" id="1_el7wl"]
+[ext_resource type="Texture2D" uid="uid://dlao81p5bp4ub" path="res://sprites/Cleric_with_gun.png" id="2_485p4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4q0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ee4q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_485p4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fp22"]
+size = Vector2(58, 20)
+
+[node name="Turret" type="Node2D" unique_id=228785809]
+script = ExtResource("1_el7wl")
+
+[node name="Turret" type="Area2D" parent="." unique_id=1621039028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turret" unique_id=220713178]
+shape = SubResource("RectangleShape2D_ee4q0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turret" unique_id=1234263909]
+sprite_frames = SubResource("SpriteFrames_ee4q0")
+
+[node name="TurretTargetArea" type="Area2D" parent="." unique_id=1691056999]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurretTargetArea" unique_id=1373312430]
+position = Vector2(19, 56)
+shape = SubResource("RectangleShape2D_1fp22")
+
+[node name="Timer" type="Timer" parent="." unique_id=1207044858]
+
+[connection signal="area_entered" from="TurretTargetArea" to="." method="_on_turret_target_area_area_entered"]
+[connection signal="area_exited" from="TurretTargetArea" to="." method="_on_turret_target_area_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

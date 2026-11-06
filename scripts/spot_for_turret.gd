@@ -1,5 +1,7 @@
-extends PathFollow2D
-var speed = 80
+extends Area2D
+
+var turret_path = preload("res://scenes/turret.tscn")
+var is_occupied = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,6 +11,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-func _physics_process(delta: float) -> void:
-	progress +=0.5
+
+func _on_body_entered(body: Node2D) -> void:
+	var turret = turret_path.instantiate()
+	turret.position = Vector2.ZERO
+	get_parent().add_child(turret)

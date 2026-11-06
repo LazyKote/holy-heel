@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var health : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,12 +12,17 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	print_debug("body")
 	if body is Player:
 		print_debug("player entered")
 
 
 func _on_area_entered(area: Area2D) -> void:
-	print_debug("area")
 	if area.is_in_group("monster"):
 		print_debug("monster entered")
+		health -= 1
+		print_debug("health = ", health)
+		if health == 0:
+			game_over()
+
+func game_over():
+	get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")

@@ -1,7 +1,7 @@
 class_name Monster extends Area2D
 
 signal attack
-signal enemy_hit
+signal monster_died
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +23,8 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("bullet"):
 		monster_got_hit()
-		emit_signal("enemy_hit")
+		body.queue_free()
+		emit_signal("monster_died")
 
 
 func monster_got_hit():
