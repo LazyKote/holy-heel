@@ -33,7 +33,7 @@ sprite_frames = SubResource("SpriteFrames_ee4q0")
 [node name="TurretTargetArea" type="Area2D" parent="." unique_id=1691056999]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TurretTargetArea" unique_id=1373312430]
-position = Vector2(19, 56)
+position = Vector2(43, 30)
 shape = SubResource("RectangleShape2D_1fp22")
 
 [node name="Timer" type="Timer" parent="." unique_id=1207044858]

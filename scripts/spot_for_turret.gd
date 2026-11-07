@@ -13,6 +13,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	var turret = turret_path.instantiate()
-	turret.position = Vector2.ZERO
-	get_parent().add_child(turret)
+	if body is Player and not is_occupied:
+		is_occupied = true
+		var turret = turret_path.instantiate()
+		turret.position = self.global_position
+		get_parent().call_deferred("add_child", turret)
