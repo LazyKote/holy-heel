@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://cjn165im5u7wm" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="TileSet" uid="uid://dtpp7ulbkccge" path="res://tilemaps/tiles_floor.tres" id="1_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://tm1k1idbdd1o" path="res://scenes/monster.tscn" id="2_0wfyh"]
-[ext_resource type="Script" uid="uid://bxi5cyk2hddwo" path="res://scenes/floor.gd" id="2_85g3d"]
+[ext_resource type="Script" uid="uid://bxi5cyk2hddwo" path="res://scripts/floor.gd" id="2_85g3d"]
 [ext_resource type="Script" uid="uid://mo76whohldmf" path="res://scripts/monster_spawner.gd" id="3_sugp2"]
-[ext_resource type="Texture2D" uid="uid://c0vwfwxn2ubym" path="res://tilemaps/Column.png" id="3_tipki"]
+[ext_resource type="Texture2D" uid="uid://c0vwfwxn2ubym" path="res://sprites/Column.png" id="3_tipki"]
 [ext_resource type="PackedScene" uid="uid://cwjuclt6lup0w" path="res://scenes/monster_path.tscn" id="4_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://b0p5y80u7rh1t" path="res://sprite_frames/Heel_scene.png" id="6_choun"]
 [ext_resource type="Script" uid="uid://c0fvhthfwjut3" path="res://scripts/heel_of_akakiy.gd" id="9_85g3d"]
 [ext_resource type="Script" uid="uid://chhvv82lc7b1a" path="res://scripts/spot_for_turret.gd" id="9_choun"]
 
@@ -364,8 +365,58 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_85g3d")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ya4ey"]
+atlas = ExtResource("6_choun")
+region = Rect2(0, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb6dy"]
+atlas = ExtResource("6_choun")
+region = Rect2(64, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trceg"]
+atlas = ExtResource("6_choun")
+region = Rect2(128, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8y0u"]
+atlas = ExtResource("6_choun")
+region = Rect2(192, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("6_choun")
+region = Rect2(256, 0, 64, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbj1t"]
+atlas = ExtResource("6_choun")
+region = Rect2(320, 0, 64, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_85g3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ya4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eb6dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8y0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkv2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbj1t")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
-size = Vector2(20, 65)
+size = Vector2(26, 65)
 
 [sub_resource type="Curve2D" id="Curve2D_jyhfs"]
 _data = {
@@ -381,7 +432,7 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_85g3d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -44.825, 0, 0, 0, 0, 1.677, 102.748)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -150, 0, 0, 0, 0, 1.677, 102.748)
 }
 point_count = 2
 
@@ -398,16 +449,12 @@ script = ExtResource("2_85g3d")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=621582356]
 position = Vector2(-115, -7)
-tile_map_data = PackedByteArray("AAD7//3/AAAGAAIAAAD7//7/AAAHAAMAAAD7////AAACAAIAAAD7/wEAAAACAAAAAAD7/wIAAAACAAEAAAD7/wMAAAAEAAEAAAD8/wMAAAABAAAAAAD9/wMAAAABAAAAAAD+/wMAAAABAAAAAAD//wMAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAABAAAAAAACAAMAAAABAAAAAAADAAMAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAABAAAAAAAGAAMAAAABAAAAAAAHAAMAAAABAAAAAAAIAAMAAAABAAAAAAAJAAMAAAABAAAAAAAKAAMAAAABAAAAAAALAAMAAAAFAAEAAAALAAQAAAABAAIAAAAKAAQAAAABAAIAAAAJAAQAAAABAAIAAAAIAAQAAAABAAIAAAAHAAQAAAABAAIAAAAGAAQAAAABAAIAAAAFAAQAAAABAAIAAAAEAAQAAAABAAIAAAADAAQAAAABAAIAAAACAAQAAAABAAIAAAABAAQAAAABAAIAAAAAAAQAAAABAAIAAAD//wQAAAABAAIAAAD+/wQAAAABAAIAAAD9/wQAAAABAAIAAAD8/wQAAAABAAIAAAD7/wQAAAABAAIAAAAMAAMAAAACAAEAAAALAAIAAAAAAAEAAAALAAEAAAAAAAEAAAAMAAIAAAACAAEAAAAMAAQAAAACAAIAAAAMAAEAAAACAAEAAAAMAAAAAAACAAEAAAAMAP//AAACAAEAAAAMAP7/AAACAAEAAAAMAP3/AAACAAEAAAALAP3/AAAFAAAAAAAKAP3/AAABAAIAAAAJAP3/AAABAAIAAAAIAP3/AAABAAIAAAAHAP3/AAABAAIAAAAGAP3/AAABAAIAAAAFAP3/AAABAAIAAAAEAP3/AAABAAIAAAADAP3/AAABAAIAAAACAP3/AAABAAIAAAABAP3/AAABAAIAAAAAAP3/AAABAAIAAAD///3/AAABAAIAAAD+//3/AAABAAIAAAD9//3/AAABAAIAAAD8//3/AAABAAIAAAD7//z/AAAAAAAAAAD8//z/AAABAAAAAAD9//z/AAABAAAAAAD+//z/AAABAAAAAAD///z/AAABAAAAAAAAAPz/AAABAAAAAAABAPz/AAABAAAAAAACAPz/AAABAAAAAAADAPz/AAABAAAAAAAEAPz/AAABAAAAAAAFAPz/AAABAAAAAAAGAPz/AAABAAAAAAAHAPz/AAABAAAAAAAIAPz/AAABAAAAAAAJAPz/AAABAAAAAAAKAPz/AAABAAAAAAALAPz/AAABAAAAAAAMAPz/AAACAAAAAAALAP7/AAAAAAEAAAALAP//AAAAAAEAAAALAAAAAAAAAAEAAAD6////AAAAAAIAAAD4////AAACAAIAAAD3//7/AAAAAAAAAAD4//7/AAAHAAMAAAD6//7/AAAAAAAAAAD3////AAAAAAIAAAD6/wEAAAAAAAAAAAD4/wIAAAACAAEAAAD3/wIAAAAAAAEAAAD3/wEAAAAAAAAAAAD4/wEAAAACAAAAAAD6/wIAAAAAAAEAAAD6/wMAAAAAAAEAAAD3/wMAAAAAAAEAAAD3/wQAAAAAAAIAAAD4/wQAAAAHAAIAAAD6/wQAAAAAAAIAAAD4/wUAAAADAAIAAAD4/wMAAAACAAEAAAD4//3/AAADAAEAAAD4//z/AAAGAAIAAAD5//z/AAACAAIAAAD5//v/AAACAAEAAAD4//v/AAAAAAEAAAD5//r/AAAEAAAAAAD6//r/AAABAAIAAAD7//r/AAABAAIAAAD8//r/AAABAAIAAAD9//r/AAABAAIAAAD+//r/AAABAAIAAAD///r/AAABAAIAAAAAAPr/AAABAAIAAAABAPr/AAABAAIAAAACAPr/AAABAAIAAAADAPr/AAABAAIAAAAEAPr/AAACAAIAAAD4//r/AAAAAAEAAAD5//n/AAABAAAAAAD6//n/AAABAAAAAAD7//n/AAABAAAAAAD8//n/AAABAAAAAAD9//n/AAABAAAAAAD+//n/AAABAAAAAAD///n/AAABAAAAAAAAAPn/AAABAAAAAAABAPn/AAABAAAAAAACAPn/AAABAAAAAAADAPn/AAABAAAAAAAEAPn/AAACAAAAAAD4//n/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAUAAAACAAAAAAAEAAUAAAAAAAAAAAD//wUAAAABAAAAAAD+/wUAAAABAAAAAAD9/wUAAAABAAAAAAD8/wUAAAABAAAAAAD7/wUAAAAEAAEAAAD7//3/AAACAAIAAAD7/wIAAAACAAAAAAD7/wMAAAACAAEAAAD7/wQAAAACAAEAAAD7/wYAAAABAAIAAAD8/wYAAAABAAIAAAD9/wYAAAABAAIAAAD+/wYAAAABAAIAAAD//wYAAAABAAIAAAAAAAYAAAACAAIAAAD6/wYAAAAAAAIAAAD6/wUAAAAAAAEAAAD6/wQAAAAAAAEAAAD6/wMAAAAAAAEAAAD6/wIAAAAAAAAAAAAEAAYAAAAAAAIAAAAFAAYAAAABAAIAAAAGAAYAAAABAAIAAAAHAAYAAAABAAIAAAAIAAYAAAABAAIAAAAFAAUAAAABAAAAAAAGAAUAAAABAAAAAAAHAAUAAAABAAAAAAAIAAUAAAABAAAAAAAJAAUAAAAFAAEAAAAJAAYAAAABAAIAAAAKAAYAAAACAAIAAAAKAAUAAAACAAEAAAAKAAQAAAACAAEAAAAJAAQAAAAAAAEAAAAKAAMAAAACAAEAAAAJAAMAAAAAAAEAAAAJAAIAAAAAAAAAAAAKAP3/AAACAAIAAAAJAP3/AAAAAAIAAAD6//3/AAAAAAIAAAD6//z/AAAAAAEAAAD7//z/AAACAAEAAAD6//v/AAAAAAEAAAD7//v/AAACAAEAAAD6//r/AAAAAAEAAAD7//r/AAACAAEAAAD6//n/AAAAAAEAAAD7//n/AAAEAAAAAAD8//n/AAABAAIAAAD9//n/AAABAAIAAAD+//n/AAABAAIAAAD6//j/AAAAAAAAAAD7//j/AAABAAAAAAD8//j/AAABAAAAAAD9//j/AAABAAAAAAD+//j/AAABAAAAAAD///j/AAABAAAAAAD///n/AAABAAIAAAAAAPn/AAACAAIAAAAAAPj/AAACAAAAAAAEAPn/AAAAAAIAAAAEAPj/AAAAAAAAAAAFAPj/AAABAAAAAAAGAPj/AAABAAAAAAAHAPj/AAABAAAAAAAIAPj/AAABAAAAAAAJAPj/AAABAAAAAAAKAPj/AAACAAAAAAAKAAIAAAACAAAAAAAKAPz/AAACAAEAAAAKAPv/AAACAAEAAAAKAPr/AAACAAEAAAAKAPn/AAACAAEAAAAJAPn/AAAFAAAAAAAJAPr/AAAAAAEAAAAJAPv/AAAAAAEAAAAJAPz/AAAAAAEAAAAIAPn/AAABAAIAAAAHAPn/AAABAAIAAAAGAPn/AAABAAIAAAAFAPn/AAABAAIAAAA=")
 tile_set = SubResource("TileSet_85g3d")
 
 [node name="Decor" type="TileMapLayer" parent="." unique_id=1637327657]
 position = Vector2(-115, -7)
-tile_map_data = PackedByteArray("AAACAAAAAQAAAAIAAAACAP//AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_6ged0")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1863081627]
-zoom = Vector2(3, 3)
 
 [node name="Monster" parent="." unique_id=959743226 instance=ExtResource("2_0wfyh")]
 position = Vector2(189, 72)
@@ -417,9 +464,20 @@ position = Vector2(-36, 15)
 script = ExtResource("9_85g3d")
 health = 3
 
+[node name="HeelSprite" type="AnimatedSprite2D" parent="HeelOfAkakiy" unique_id=389784990]
+sprite_frames = SubResource("SpriteFrames_85g3d")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HeelOfAkakiy" unique_id=2134827627]
-position = Vector2(0, -21.5)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_6ged0")
+
+[node name="Candles" type="Node2D" parent="HeelOfAkakiy" unique_id=1455847416]
+
+[node name="Candle1" type="AnimatedSprite2D" parent="HeelOfAkakiy/Candles" unique_id=1020266944]
+
+[node name="Candle2" type="AnimatedSprite2D" parent="HeelOfAkakiy/Candles" unique_id=950706692]
+
+[node name="Candle3" type="AnimatedSprite2D" parent="HeelOfAkakiy/Candles" unique_id=1255247843]
 
 [node name="WavesManager" type="Node2D" parent="." unique_id=193984299 node_paths=PackedStringArray("paths")]
 script = ExtResource("3_sugp2")

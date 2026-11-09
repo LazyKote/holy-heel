@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bu1o1d63qa7n7"]
 
+[ext_resource type="Script" uid="uid://g3vgrkn1hsgb" path="res://scripts/main_ui.gd" id="1_fnul3"]
+
 [node name="MainUI" type="CanvasLayer" unique_id=1227034133]
+script = ExtResource("1_fnul3")
 
 [node name="WaveCounter" type="Panel" parent="." unique_id=1119577142]
 offset_right = 40.0

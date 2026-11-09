@@ -1,10 +1,12 @@
 extends Area2D
 
+@onready var heel_anim  = $HeelSprite
+
 @export var health : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	heel_anim.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
