@@ -61,6 +61,7 @@ layout_mode = 2
 
 [node name="GameOverLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1606838147]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_fonts/font = ExtResource("2_jw6e5")
 theme_override_font_sizes/font_size = 64
 text = "Game Over"
@@ -75,9 +76,14 @@ layout_mode = 2
 
 [node name="RestartButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer2" unique_id=1313174425]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_colors/font_pressed_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_colors/font_hover_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_fonts/font = ExtResource("2_jw6e5")
 theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxFlat_1fp22")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fp22")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1fp22")
 text = "Restart"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/RestartButton" to="." method="_on_restart_button_pressed"]

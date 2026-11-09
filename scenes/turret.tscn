@@ -1,23 +1,85 @@
 [gd_scene format=3 uid="uid://cdace3417jh66"]
 
 [ext_resource type="Script" uid="uid://bicsa48de0274" path="res://scripts/turret.gd" id="1_el7wl"]
-[ext_resource type="Texture2D" uid="uid://dlao81p5bp4ub" path="res://sprites/Cleric_with_gun.png" id="2_485p4"]
+[ext_resource type="Texture2D" uid="uid://cceye31n0qqdr" path="res://sprite_frames/Turret_shot.png" id="2_el7wl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4q0"]
+size = Vector2(30, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_485p4"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pp6j5"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fjxm"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dirdf"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqfwu"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dv4j"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tg0ex"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo4u0"]
+atlas = ExtResource("2_el7wl")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ee4q0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_485p4")
+"texture": SubResource("AtlasTexture_485p4")
 }],
 "loop": 1,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_485p4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pp6j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fjxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dirdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqfwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dv4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tg0ex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo4u0")
+}],
+"loop": 1,
+"name": &"fire",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fp22"]
-size = Vector2(58, 20)
+size = Vector2(58, 48)
 
 [node name="Turret" type="Node2D" unique_id=228785809]
 script = ExtResource("1_el7wl")
@@ -25,15 +87,17 @@ script = ExtResource("1_el7wl")
 [node name="Turret" type="Area2D" parent="." unique_id=1621039028]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turret" unique_id=220713178]
+position = Vector2(1, -1)
 shape = SubResource("RectangleShape2D_ee4q0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turret" unique_id=1234263909]
 sprite_frames = SubResource("SpriteFrames_ee4q0")
 
 [node name="TurretTargetArea" type="Area2D" parent="." unique_id=1691056999]
+position = Vector2(0, 49)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TurretTargetArea" unique_id=1373312430]
-position = Vector2(43, 30)
+position = Vector2(0, 9)
 shape = SubResource("RectangleShape2D_1fp22")
 
 [node name="Timer" type="Timer" parent="." unique_id=1207044858]

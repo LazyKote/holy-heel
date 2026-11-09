@@ -1,23 +1,21 @@
 [gd_scene format=3 uid="uid://cx5srtekcaucu"]
 
 [ext_resource type="Script" uid="uid://fso8bipb2p1a" path="res://scripts/bullet.gd" id="1_mkf8s"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h1aey"]
-load_path = "res://.godot/imported/Imp.png-9b922d940b1e291b714a83e85a950792.ctex"
+[ext_resource type="Texture2D" uid="uid://cdcx4vejdcmud" path="res://sprites/Bullet.png" id="2_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ged0"]
-size = Vector2(10, 2)
+size = Vector2(6, 4)
 
 [node name="Bullet" type="CharacterBody2D" unique_id=2144325894 groups=["bullet"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_mkf8s")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1461095507]
-scale = Vector2(0.32, 0.06)
-texture = SubResource("CompressedTexture2D_h1aey")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1417126566]
+texture = ExtResource("2_y25gk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=843185361]
+position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_6ged0")
 
 [node name="Timer" type="Timer" parent="." unique_id=921185319]

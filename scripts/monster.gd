@@ -1,7 +1,10 @@
 class_name Monster extends Area2D
 
+@onready var anim = $AnimatedSprite2D
 signal attack
 signal monster_died
+
+@export var health = 3
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +22,7 @@ func _on_body_entered(body: Node2D) -> void:
 		#emit_signal("attack")
 	
 	if body is Player:
+		anim.play("death")
 		body.kill()
 	
 	if body.is_in_group("bullet"):
@@ -28,4 +32,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func monster_got_hit():
-	queue_free()
+	health -=1
+	if health <=0:
+		queue_free()

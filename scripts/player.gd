@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 
-const speed = 250.0
+const speed = 200.0
 
 var bullet_path = preload("res://scenes/bullet.tscn")
 var _facing: String = "down"

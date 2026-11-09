@@ -17,4 +17,5 @@ func _on_body_entered(body: Node2D) -> void:
 		is_occupied = true
 		var turret = turret_path.instantiate()
 		turret.position = self.global_position
+		turret.rotation = self.global_rotation
 		get_parent().call_deferred("add_child", turret)

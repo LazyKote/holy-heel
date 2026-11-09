@@ -1,12 +1,20 @@
 [gd_resource type="SpriteFrames" format=3 uid="uid://74t44h4sh8qm"]
 
-[ext_resource type="Texture2D" uid="uid://dlao81p5bp4ub" path="res://sprites/Cleric_with_gun.png" id="1_mm1mf"]
+[ext_resource type="Texture2D" uid="uid://b373y8pwbju3q" path="res://sprite_frames/Cleric_walk1.png" id="1_u6mk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tduo"]
+atlas = ExtResource("1_u6mk6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nscs"]
+atlas = ExtResource("1_u6mk6")
+region = Rect2(32, 0, 32, 32)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
 }],
 "loop": 1,
 "name": &"idle_down",
@@ -14,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
 }],
 "loop": 1,
 "name": &"idle_left",
@@ -22,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
 }],
 "loop": 1,
 "name": &"idle_right",
@@ -30,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
 }],
 "loop": 1,
 "name": &"idle_up",
@@ -38,7 +46,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nscs")
 }],
 "loop": 1,
 "name": &"walk_down",
@@ -46,7 +57,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nscs")
 }],
 "loop": 1,
 "name": &"walk_left",
@@ -54,7 +68,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nscs")
 }],
 "loop": 1,
 "name": &"walk_right",
@@ -62,7 +79,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_mm1mf")
+"texture": SubResource("AtlasTexture_4tduo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nscs")
 }],
 "loop": 1,
 "name": &"walk_up",

@@ -1,18 +1,81 @@
 [gd_scene format=3 uid="uid://bu1o1d63qa7n7"]
 
 [ext_resource type="Script" uid="uid://g3vgrkn1hsgb" path="res://scripts/main_ui.gd" id="1_fnul3"]
+[ext_resource type="FontFile" uid="uid://bmkwkd0h27d1v" path="res://fonts/Jacquard12-Regular.ttf" id="2_513t2"]
 
-[node name="MainUI" type="CanvasLayer" unique_id=1227034133]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp4s5"]
+bg_color = Color(0, 0.015686275, 0.07058824, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+
+[node name="MainUI" type="CanvasLayer" unique_id=1227034133 node_paths=PackedStringArray("wave_counter_label")]
 script = ExtResource("1_fnul3")
+wave_counter_label = NodePath("MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer/WaveCounterLabel")
 
-[node name="WaveCounter" type="Panel" parent="." unique_id=1119577142]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=92094521]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="WaveCounter" unique_id=1574809188]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="WaveCounterLabel" type="Label" parent="WaveCounter/MarginContainer" unique_id=1511710167]
+[node name="WaveCounter" type="Panel" parent="MarginContainer" unique_id=1119577142]
+custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gp4s5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/WaveCounter" unique_id=638640970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -20.0
+offset_right = 23.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/WaveCounter/MarginContainer" unique_id=1392467078]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1559522499]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1701877472]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("2_513t2")
+theme_override_font_sizes/font_size = 16
+text = "Wave"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1574809188]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="WaveCounterLabel" type="Label" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer" unique_id=1511710167]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("2_513t2")
+theme_override_font_sizes/font_size = 16
+text = "0"

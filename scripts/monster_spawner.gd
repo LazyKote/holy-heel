@@ -8,6 +8,7 @@ var monsters_alive = 0
 
 enum WaveState {PREPARATION, FIGHT, WAVE_END}
 var current_state = WaveState.PREPARATION
+var wave_number = 0
 @export var preparation_time = 10.0
 @export var monsters_to_spawn = 2
 @export var spawn_delay = 1.0
@@ -48,6 +49,9 @@ func om_monster_died():
 
 func start_wave():
 	monsters_alive += monsters_to_spawn
+	wave_number+=1
+	print_debug(wave_number)
+	MainUi.wave_counter_update(wave_number)
 	for i in range(monsters_to_spawn):
 		spawn_monster()
 		await get_tree().create_timer(spawn_delay).timeout
