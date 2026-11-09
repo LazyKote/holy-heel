@@ -512,8 +512,9 @@ position = Vector2(-17, 25)
 sprite_frames = ExtResource("6_ya4ey")
 animation = &"burn"
 
-[node name="WavesManager" type="Node2D" parent="." unique_id=193984299 node_paths=PackedStringArray("paths")]
+[node name="WavesManager" type="Node2D" parent="." unique_id=193984299 node_paths=PackedStringArray("game_ui", "paths")]
 script = ExtResource("3_sugp2")
+game_ui = NodePath("../MainUI")
 path_follow = ExtResource("4_jyhfs")
 paths = [NodePath("RightPath2D"), NodePath("LeftPath2D"), NodePath("UpPath2D")]
 monsters_to_spawn = 4
