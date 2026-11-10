@@ -4,7 +4,7 @@ class_name Bullet extends CharacterBody2D
 var pos : Vector2
 var rot : float
 var dir : float
-@export var speed = 1000.0
+@export var speed = 500.0
 
 @onready var bullet_timer = $Timer
 

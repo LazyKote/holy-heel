@@ -10,7 +10,10 @@ var mouse_position
 var direction_vector : Vector2
 
 @onready var player_animation = $AnimatedSprite2D
-
+@onready var gun_timer = $Gun/GunTimer
+@onready var gun = $Gun
+@onready var gun_anim = $Gun/AnimatedSprite2D
+@onready var gun_sound = $Gun/AudioStreamPlayer2D
 
 func _ready() -> void:
 	pass
@@ -23,9 +26,9 @@ func get_input():
 
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("fire"):
+	if Input.is_action_pressed("fire"):
 		fire()
-		
+	gun.look_at(get_global_mouse_position())
 	get_input()
 	move_and_slide()
 	
@@ -52,10 +55,15 @@ func kill() -> void:
 
 
 func fire():
+	if not gun_timer.is_stopped():
+		return
 	var bullet = bullet_path.instantiate()
+	gun_sound.play()
 	var mouse_pos = get_global_mouse_position()
 	var aim_angle = global_position.angle_to_point(mouse_pos)
 	bullet.dir = aim_angle
 	bullet.pos = $Gun.global_position
 	bullet.rot = aim_angle
 	get_parent().add_child(bullet)
+	gun_timer.start()
+	gun_anim.play("fire")

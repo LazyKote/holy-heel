@@ -12,6 +12,7 @@ class_name MonsterSpawner extends Node2D
 
 var monsters : Array[PathFollow2D] = []
 var monsters_alive = 0
+var money = 0
 
 enum WaveState {PREPARATION, FIGHT, WAVE_END}
 var current_state = WaveState.PREPARATION
@@ -49,17 +50,21 @@ func spawn_monster():
 
 func om_monster_died():
 	monsters_alive -=1
+	money +=1
+	game_ui.money_label_update(money)
 
 func start_wave():
 	monsters_alive += monsters_to_spawn
 	wave_number += 1
-	print_debug(wave_number)
 	
 	game_ui.wave_counter_update(wave_number)
 	for i in range(monsters_to_spawn):
 		spawn_monster()
 		await get_tree().create_timer(spawn_delay).timeout
 
-func _unhandled_input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("Test"):
-		spawn_monster()
+func how_much_money():
+	return(money)
+	
+func subtract_money(money_subtracted):
+	money -= money_subtracted
+	game_ui.money_label_update(money)

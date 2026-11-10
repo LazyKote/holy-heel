@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://g3vgrkn1hsgb" path="res://scripts/main_ui.gd" id="1_fnul3"]
 [ext_resource type="FontFile" uid="uid://bmkwkd0h27d1v" path="res://fonts/Jacquard12-Regular.ttf" id="2_513t2"]
+[ext_resource type="Texture2D" uid="uid://cwwymfvv456s7" path="res://sprites/Holy_heel1.png" id="3_e6fyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gp4s5"]
 bg_color = Color(0, 0.015686275, 0.07058824, 1)
@@ -11,9 +12,10 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 
-[node name="MainUI" type="CanvasLayer" unique_id=1227034133 node_paths=PackedStringArray("wave_counter_label")]
+[node name="MainUI" type="CanvasLayer" unique_id=1227034133 node_paths=PackedStringArray("wave_counter_label", "money_label")]
 script = ExtResource("1_fnul3")
 wave_counter_label = NodePath("MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer/WaveCounterLabel")
+money_label = NodePath("MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer/MoneyLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=92094521]
 offset_right = 40.0
@@ -73,6 +75,74 @@ theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
 [node name="WaveCounterLabel" type="Label" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer" unique_id=1511710167]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("2_513t2")
+theme_override_font_sizes/font_size = 16
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1713051388]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Money" type="Panel" parent="MarginContainer2" unique_id=176718750]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_gp4s5")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Money" unique_id=584634]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -20.0
+offset_right = 23.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/Money/MarginContainer" unique_id=803887413]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/Money/MarginContainer/HBoxContainer" unique_id=1136450988]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1839333741]
+layout_mode = 2
+texture = ExtResource("3_e6fyy")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Money/MarginContainer/HBoxContainer" unique_id=1632369819]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="MoneyLabel" type="Label" parent="MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer" unique_id=973217022]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)

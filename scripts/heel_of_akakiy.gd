@@ -24,10 +24,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("monster"):
-		print_debug("monster entered")
 		health -= 1
 		candles[health].play("went_out")
-		print_debug("health = ", health)
+		area.monster_diying()
 		if health == 0:
 			game_over()
 

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3re5hp2has4l" path="res://sprite_frames/Imp_damage.png" id="2_jlss8"]
 [ext_resource type="Texture2D" uid="uid://b1ffcjchjbsnb" path="res://sprite_frames/Imp_death.png" id="3_gp4s5"]
 [ext_resource type="Texture2D" uid="uid://6x277e3sw7lm" path="res://sprite_frames/Imps_walk.png" id="4_gdl1p"]
+[ext_resource type="AudioStream" uid="uid://ntyjwg6hnqfj" path="res://sounds/zombie-death-1.wav" id="5_gp4s5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8ewj"]
 atlas = ExtResource("2_jlss8")
@@ -97,9 +98,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fttm7")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"attack",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -147,9 +148,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nmppe")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"death",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -173,9 +174,12 @@ script = ExtResource("1_1cbnp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1054753369]
 sprite_frames = SubResource("SpriteFrames_fynom")
-animation = &"walking"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1062604900]
 shape = SubResource("RectangleShape2D_vaugr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1844114971]
+stream = ExtResource("5_gp4s5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

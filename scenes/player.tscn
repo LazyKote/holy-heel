@@ -4,6 +4,7 @@
 [ext_resource type="SpriteFrames" uid="uid://74t44h4sh8qm" path="res://sprite_frames/cleric_animations.tres" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://d0gg47wj3o3tt" path="res://sprites/Gun-0x0-16x16.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://c3ir14ja2iinb" path="res://sprite_frames/Gun.png" id="4_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://hkvck6vp4e4o" path="res://sounds/water-splash.wav" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(20, 32)
@@ -40,9 +41,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_smehm")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"fire",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=580058509]
@@ -60,5 +61,13 @@ position = Vector2(14, -3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Gun" unique_id=908995044]
 sprite_frames = SubResource("SpriteFrames_6ged0")
+animation = &"fire"
+
+[node name="GunTimer" type="Timer" parent="Gun" unique_id=321627339]
+wait_time = 0.5
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Gun" unique_id=490329460]
+stream = ExtResource("5_qlg0r")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1285951838]
