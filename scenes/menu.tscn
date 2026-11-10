@@ -6,8 +6,6 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ged0"]
 bg_color = Color(0, 0.015686275, 0.07058824, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ged0"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lkl0d"]
 bg_color = Color(0, 0.015686275, 0.07058824, 1)
 border_width_left = 1
@@ -15,6 +13,44 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ged0"]
+
+[sub_resource type="Animation" id="Animation_vjb58"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/GameName:offset_transform_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(15, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_con2f"]
+resource_name = "game_name_anim"
+length = 7.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/GameName:offset_transform_position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.3, 0.5, 20, -0.29999995, -0.5, 0.3, 0.5, 0, -0.29999995, -0.5, 0, 0),
+"times": PackedFloat32Array(0, 3.7500002, 7.5000005)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mhnvy"]
+_data = {
+&"RESET": SubResource("Animation_vjb58"),
+&"game_name_anim": SubResource("Animation_con2f")
+}
 
 [node name="Menu" type="Control" unique_id=1779720098]
 layout_mode = 3
@@ -34,43 +70,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_6ged0")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=876703138]
+[node name="ButtonsContainer" type="VBoxContainer" parent="Panel" unique_id=876703138]
+custom_maximum_size = Vector2(150, -1)
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchor_bottom = 1.0
+offset_left = -92.5
+offset_top = -77.0
+offset_right = 92.5
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=125178016]
-layout_mode = 2
-
-[node name="GameName" type="Label" parent="Panel/VBoxContainer/MarginContainer" unique_id=1330578870]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_yqeox")
-theme_override_font_sizes/font_size = 36
-text = "Holy Heel"
-
-[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=2055408339]
-layout_mode = 2
-theme_override_constants/separation = 8
-theme_override_styles/separator = SubResource("StyleBoxEmpty_6ged0")
-
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=1332653938]
+[node name="StartContainer" type="MarginContainer" parent="Panel/ButtonsContainer" unique_id=1332653938]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="StartButton" type="Button" parent="Panel/VBoxContainer/MarginContainer2" unique_id=1714394538]
+[node name="StartButton" type="Button" parent="Panel/ButtonsContainer/StartContainer" unique_id=1714394538]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
@@ -82,13 +103,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lkl0d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lkl0d")
 text = "Play"
 
-[node name="MarginContainer3" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=628388217]
+[node name="QuitContainer" type="MarginContainer" parent="Panel/ButtonsContainer" unique_id=628388217]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="QuitButton" type="Button" parent="Panel/VBoxContainer/MarginContainer3" unique_id=874037823]
+[node name="QuitButton" type="Button" parent="Panel/ButtonsContainer/QuitContainer" unique_id=874037823]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_colors/font_pressed_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
@@ -100,5 +121,43 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_lkl0d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lkl0d")
 text = "Quit"
 
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer2/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/MarginContainer3/QuitButton" to="." method="_on_quit_button_pressed"]
+[node name="HSeparator" type="HSeparator" parent="Panel/ButtonsContainer" unique_id=2055408339]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_6ged0")
+
+[node name="LogoContainer" type="MarginContainer" parent="Panel" unique_id=125178016]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_right = 130.0
+offset_bottom = 71.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/LogoContainer" unique_id=433505647]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Panel/LogoContainer/VBoxContainer" unique_id=1429518703]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_6ged0")
+
+[node name="GameName" type="Label" parent="Panel/LogoContainer/VBoxContainer" unique_id=1330578870]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 15)
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("1_yqeox")
+theme_override_font_sizes/font_size = 70
+text = "Holy Heel"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1085259214]
+root_node = NodePath("../Panel/LogoContainer")
+libraries/ = SubResource("AnimationLibrary_mhnvy")
+
+[connection signal="pressed" from="Panel/ButtonsContainer/StartContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/ButtonsContainer/QuitContainer/QuitButton" to="." method="_on_quit_button_pressed"]
