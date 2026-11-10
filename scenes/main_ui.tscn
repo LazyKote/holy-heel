@@ -12,12 +12,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 
-[node name="MainUI" type="CanvasLayer" unique_id=1227034133 node_paths=PackedStringArray("wave_counter_label", "money_label")]
+[node name="MainUI" type="CanvasLayer" unique_id=1227034133 node_paths=PackedStringArray("wave_counter_label", "money_label", "pause")]
+process_mode = 3
 script = ExtResource("1_fnul3")
-wave_counter_label = NodePath("MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer/WaveCounterLabel")
-money_label = NodePath("MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer/MoneyLabel")
+wave_counter_label = NodePath("WaveContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer/WaveCounterLabel")
+money_label = NodePath("MoneyContainer/Money/MarginContainer/HBoxContainer/MarginContainer/MoneyLabel")
+pause = NodePath("PauseContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=92094521]
+[node name="WaveContainer" type="MarginContainer" parent="." unique_id=92094521]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 5
@@ -25,14 +27,14 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="WaveCounter" type="Panel" parent="MarginContainer" unique_id=1119577142]
+[node name="WaveCounter" type="Panel" parent="WaveContainer" unique_id=1119577142]
 custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gp4s5")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/WaveCounter" unique_id=638640970]
+[node name="MarginContainer" type="MarginContainer" parent="WaveContainer/WaveCounter" unique_id=638640970]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,31 +52,31 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/WaveCounter/MarginContainer" unique_id=1392467078]
+[node name="HBoxContainer" type="HBoxContainer" parent="WaveContainer/WaveCounter/MarginContainer" unique_id=1392467078]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1559522499]
+[node name="MarginContainer2" type="MarginContainer" parent="WaveContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1559522499]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="Label" type="Label" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1701877472]
+[node name="Label" type="Label" parent="WaveContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1701877472]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_fonts/font = ExtResource("2_513t2")
 theme_override_font_sizes/font_size = 16
 text = "Wave"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1574809188]
+[node name="MarginContainer" type="MarginContainer" parent="WaveContainer/WaveCounter/MarginContainer/HBoxContainer" unique_id=1574809188]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="WaveCounterLabel" type="Label" parent="MarginContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer" unique_id=1511710167]
+[node name="WaveCounterLabel" type="Label" parent="WaveContainer/WaveCounter/MarginContainer/HBoxContainer/MarginContainer" unique_id=1511710167]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
@@ -82,7 +84,7 @@ theme_override_fonts/font = ExtResource("2_513t2")
 theme_override_font_sizes/font_size = 16
 text = "0"
 
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1713051388]
+[node name="MoneyContainer" type="MarginContainer" parent="." unique_id=1713051388]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -94,14 +96,14 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="Money" type="Panel" parent="MarginContainer2" unique_id=176718750]
+[node name="Money" type="Panel" parent="MoneyContainer" unique_id=176718750]
 custom_minimum_size = Vector2(60, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_gp4s5")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Money" unique_id=584634]
+[node name="MarginContainer" type="MarginContainer" parent="MoneyContainer/Money" unique_id=584634]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,10 +121,10 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/Money/MarginContainer" unique_id=803887413]
+[node name="HBoxContainer" type="HBoxContainer" parent="MoneyContainer/Money/MarginContainer" unique_id=803887413]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/Money/MarginContainer/HBoxContainer" unique_id=1136450988]
+[node name="MarginContainer2" type="MarginContainer" parent="MoneyContainer/Money/MarginContainer/HBoxContainer" unique_id=1136450988]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -131,21 +133,44 @@ theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1839333741]
+[node name="TextureRect" type="TextureRect" parent="MoneyContainer/Money/MarginContainer/HBoxContainer/MarginContainer2" unique_id=1839333741]
 layout_mode = 2
 texture = ExtResource("3_e6fyy")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Money/MarginContainer/HBoxContainer" unique_id=1632369819]
+[node name="MarginContainer" type="MarginContainer" parent="MoneyContainer/Money/MarginContainer/HBoxContainer" unique_id=1632369819]
 layout_mode = 2
 theme_override_constants/margin_left = 1
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_right = 1
 theme_override_constants/margin_bottom = 1
 
-[node name="MoneyLabel" type="Label" parent="MarginContainer2/Money/MarginContainer/HBoxContainer/MarginContainer" unique_id=973217022]
+[node name="MoneyLabel" type="Label" parent="MoneyContainer/Money/MarginContainer/HBoxContainer/MarginContainer" unique_id=973217022]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
 theme_override_fonts/font = ExtResource("2_513t2")
 theme_override_font_sizes/font_size = 16
 text = "0"
+
+[node name="PauseContainer" type="MarginContainer" parent="." unique_id=934854644]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -35.5
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BgRect" type="ColorRect" parent="PauseContainer" unique_id=1910793841]
+layout_mode = 2
+color = Color(0, 0.015686275, 0.07058824, 1)
+
+[node name="Label" type="Label" parent="PauseContainer" unique_id=1077219155]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("2_513t2")
+theme_override_font_sizes/font_size = 70
+text = "Pause"
+horizontal_alignment = 1

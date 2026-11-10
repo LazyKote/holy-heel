@@ -1,16 +1,15 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
+	animation_player.play("game_name_anim")
 
 
 func _on_start_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
-
 
 
 func _on_quit_button_pressed() -> void:
