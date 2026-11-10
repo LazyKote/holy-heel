@@ -3,6 +3,8 @@
 [ext_resource type="FontFile" uid="uid://bmkwkd0h27d1v" path="res://fonts/Jacquard12-Regular.ttf" id="1_c13y7"]
 [ext_resource type="Script" uid="uid://bijohnn2k4fmy" path="res://scripts/tutorial.gd" id="1_ph3nu"]
 [ext_resource type="Texture2D" uid="uid://cwwymfvv456s7" path="res://sprites/Holy_heel1.png" id="2_8ho6b"]
+[ext_resource type="FontFile" uid="uid://bg8kcvhcxfjce" path="res://fonts/DungeonFont.ttf" id="3_4kmhl"]
+[ext_resource type="AudioStream" uid="uid://b8ulma44wkbnq" path="res://sounds/The rising of holy Akaky_MENU.mp3" id="5_cq4me"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ged0"]
 bg_color = Color(0, 0.015686275, 0.07058824, 1)
@@ -63,35 +65,42 @@ text = "How to play"
 
 [node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=87740048]
 layout_mode = 2
-theme_override_constants/separation = 27
+theme_override_constants/separation = 18
 theme_override_styles/separator = SubResource("StyleBoxEmpty_6ged0")
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer" unique_id=562740443]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "Press WASD to walk"
 
 [node name="Label3" type="Label" parent="Panel/VBoxContainer" unique_id=568881337]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "Click on the LMB to fire"
 
 [node name="Label2" type="Label" parent="Panel/VBoxContainer" unique_id=1284190203]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "Press E to interact with turret base"
+
+[node name="Label6" type="Label" parent="Panel/VBoxContainer" unique_id=1253034749]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("3_4kmhl")
+text = "Press ESC, TAB or P to pause the game"
 
 [node name="Label4" type="Label" parent="Panel/VBoxContainer" unique_id=1259365091]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "You need 10 Acacius's blessing to buy a turret"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer" unique_id=705083961]
@@ -102,7 +111,7 @@ size_flags_vertical = 4
 [node name="Label" type="Label" parent="Panel/VBoxContainer/HBoxContainer" unique_id=295752052]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "This is Acacius's blessing - "
 
 [node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/HBoxContainer" unique_id=58324423]
@@ -115,7 +124,7 @@ texture = ExtResource("2_8ho6b")
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.8509804, 0.7254902, 0.50980395, 1)
-theme_override_fonts/font = ExtResource("1_c13y7")
+theme_override_fonts/font = ExtResource("3_4kmhl")
 text = "you get it after killing a demon"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer" unique_id=303395662]
@@ -135,5 +144,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lkl0d")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lkl0d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lkl0d")
 text = "Play"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=696605069]
+stream = ExtResource("5_cq4me")
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="Panel/VBoxContainer/MarginContainer2/Button" to="." method="_on_button_pressed"]

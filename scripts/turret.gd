@@ -3,6 +3,7 @@ extends Node2D
 @onready var target_area = $TurretTargetArea
 @onready var fire_timer = $Timer
 @onready var turret_sprite = $Turret/AnimatedSprite2D
+@onready var shot_sound = $Shot
 
 var enemies_in_range: Array[Node2D] = []
 var bullet_path = preload("res://scenes/bullet.tscn")
@@ -24,6 +25,7 @@ func fire():
 	bullet.dir = aim_angle
 	bullet.pos = global_position + Vector2.RIGHT.rotated(aim_angle) * 30
 	bullet.rot = aim_angle
+	shot_sound.play()
 	get_parent().add_child(bullet)
 
 func _on_turret_target_area_area_entered(area: Area2D) -> void:

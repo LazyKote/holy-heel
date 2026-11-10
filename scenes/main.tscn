@@ -10,9 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://b0p5y80u7rh1t" path="res://sprite_frames/Heel_scene.png" id="6_choun"]
 [ext_resource type="SpriteFrames" uid="uid://bq6178xk7c51u" path="res://sprite_frames/candle_burning.tres" id="6_ya4ey"]
 [ext_resource type="Script" uid="uid://c0fvhthfwjut3" path="res://scripts/heel_of_akakiy.gd" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://ba5hayonyjai6" path="res://sounds/heel_damage.wav" id="9_a8y0u"]
 [ext_resource type="Script" uid="uid://chhvv82lc7b1a" path="res://scripts/spot_for_turret.gd" id="9_choun"]
 [ext_resource type="Texture2D" uid="uid://bg7ubgkc4n0nv" path="res://sprites/Turret_shot-0x0-32x32.png" id="11_ya4ey"]
 [ext_resource type="Texture2D" uid="uid://ckhiwqa6tmaq0" path="res://sprite_frames/nothing.png" id="13_trceg"]
+[ext_resource type="AudioStream" uid="uid://ckfctbd0ss6jk" path="res://sounds/The rising of holy Akaky2.mp3" id="15_jkv2x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("13_trceg")
@@ -529,6 +531,9 @@ position = Vector2(-17, 25)
 sprite_frames = ExtResource("6_ya4ey")
 animation = &"burn"
 
+[node name="HeelDamage" type="AudioStreamPlayer2D" parent="HeelOfAkakiy" unique_id=874536226]
+stream = ExtResource("9_a8y0u")
+
 [node name="WavesManager" type="Node2D" parent="." unique_id=193984299 node_paths=PackedStringArray("game_ui", "paths")]
 script = ExtResource("3_sugp2")
 game_ui = NodePath("../MainUI")
@@ -644,6 +649,11 @@ shape = SubResource("RectangleShape2D_ee4q0")
 
 [node name="Sprite2D" type="Sprite2D" parent="SpotForTurret8" unique_id=2125803511]
 texture = ExtResource("11_ya4ey")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=891311417]
+stream = ExtResource("15_jkv2x")
+autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="HeelOfAkakiy" to="HeelOfAkakiy" method="_on_area_entered"]
 [connection signal="body_entered" from="HeelOfAkakiy" to="HeelOfAkakiy" method="_on_body_entered"]

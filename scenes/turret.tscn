@@ -102,6 +102,8 @@ shape = SubResource("RectangleShape2D_1fp22")
 
 [node name="Timer" type="Timer" parent="." unique_id=1207044858]
 
+[node name="Shot" type="AudioStreamPlayer2D" parent="." unique_id=1429859295]
+
 [connection signal="area_entered" from="TurretTargetArea" to="." method="_on_turret_target_area_area_entered"]
 [connection signal="area_exited" from="TurretTargetArea" to="." method="_on_turret_target_area_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

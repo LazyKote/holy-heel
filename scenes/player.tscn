@@ -4,7 +4,9 @@
 [ext_resource type="SpriteFrames" uid="uid://74t44h4sh8qm" path="res://sprite_frames/cleric_animations.tres" id="2_g2els"]
 [ext_resource type="Texture2D" uid="uid://d0gg47wj3o3tt" path="res://sprites/Gun-0x0-16x16.png" id="3_dqkch"]
 [ext_resource type="Texture2D" uid="uid://c3ir14ja2iinb" path="res://sprite_frames/Gun.png" id="4_qlg0r"]
-[ext_resource type="AudioStream" uid="uid://hkvck6vp4e4o" path="res://sounds/water-splash.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://j5yhovgtvwv4" path="res://sounds/shoot.wav" id="5_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://c87wndbbeqefp" path="res://sounds/step1.wav" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://cn7vftl53j3pq" path="res://sounds/priest_died.wav" id="7_fjrip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(20, 32)
@@ -68,6 +70,12 @@ wait_time = 0.5
 one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Gun" unique_id=490329460]
-stream = ExtResource("5_qlg0r")
+stream = ExtResource("5_tuyoq")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1285951838]
+
+[node name="Step" type="AudioStreamPlayer2D" parent="." unique_id=282156434]
+stream = ExtResource("6_tuyoq")
+
+[node name="Death" type="AudioStreamPlayer2D" parent="." unique_id=687110213]
+stream = ExtResource("7_fjrip")

@@ -14,6 +14,8 @@ var direction_vector : Vector2
 @onready var gun = $Gun
 @onready var gun_anim = $Gun/AnimatedSprite2D
 @onready var gun_sound = $Gun/AudioStreamPlayer2D
+@onready var step_sound = $Step
+@onready var death_sound = $Death
 
 func _ready() -> void:
 	pass
@@ -23,6 +25,7 @@ func get_input():
 	var input_dir = Input.get_vector("go_left", "go_right", "go_up", "go_down")
 	velocity = input_dir * speed
 	_update_animation(input_dir)
+	
 
 
 func _physics_process(delta):
@@ -51,6 +54,7 @@ func _update_animation(input_dir: Vector2) -> void:
 
 func kill() -> void:
 	print_debug("Kill Player")
+	death_sound.play()
 	global_position = spawn_location
 
 

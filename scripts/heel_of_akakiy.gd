@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var heel_anim  = $HeelSprite
+@onready var damage_sound = $HeelDamage
 
 @export var health : int
 @export var candles : Array[AnimatedSprite2D]
@@ -27,6 +28,7 @@ func _on_area_entered(area: Area2D) -> void:
 		health -= 1
 		candles[health].play("went_out")
 		area.monster_diying()
+		damage_sound.play()
 		if health == 0:
 			game_over()
 
