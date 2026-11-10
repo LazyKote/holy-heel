@@ -1,7 +1,14 @@
-extends Node2D
+class_name MonsterSpawner extends Node2D
+
+@export var game_ui: MainUI
+
 @export var path_follow : PackedScene
 @export var total_monster_spawned : int
 @export var paths: Array[Path2D]
+
+@export var preparation_time = 10.0
+@export var monsters_to_spawn = 2
+@export var spawn_delay = 1.0
 
 var monsters : Array[PathFollow2D] = []
 var monsters_alive = 0
@@ -9,14 +16,10 @@ var monsters_alive = 0
 enum WaveState {PREPARATION, FIGHT, WAVE_END}
 var current_state = WaveState.PREPARATION
 var wave_number = 0
-@export var preparation_time = 10.0
-@export var monsters_to_spawn = 2
-@export var spawn_delay = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -49,9 +52,10 @@ func om_monster_died():
 
 func start_wave():
 	monsters_alive += monsters_to_spawn
-	wave_number+=1
+	wave_number += 1
 	print_debug(wave_number)
-	MainUi.wave_counter_update(wave_number)
+	
+	game_ui.wave_counter_update(wave_number)
 	for i in range(monsters_to_spawn):
 		spawn_monster()
 		await get_tree().create_timer(spawn_delay).timeout
